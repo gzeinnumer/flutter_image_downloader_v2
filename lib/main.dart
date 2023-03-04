@@ -75,10 +75,14 @@ class _MyHomePageState extends State<MyHomePage> {
                   var mimeType = await ImageDownloader.findMimeType(imageId);
                   setState(() {
                     location = path.toString();
-                    print("zein"+location);
+                    ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                      content: Text(location),
+                    ));
                   });
                 } on PlatformException catch (error) {
-                  print("zein_"+error.message.toString());
+                  ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                    content: Text(error.message.toString()),
+                  ));
                 }
               },
             ),
